@@ -6,7 +6,7 @@ function setup() {
   noStroke();
   fill(0, 0, 0)
   // strokeWeight(20)
-  // stroke(255, 255, 255)xwxw
+  // stroke(255, 255, 255)
   // background(0)
   stars = Array(windowWidth*windowHeight/2500|0).fill(0).map((v, i)=>[Math.random()*windowWidth, Math.random()*windowHeight, Math.random()*255, Math.random()*8]);
 }
