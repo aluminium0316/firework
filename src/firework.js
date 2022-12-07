@@ -36,8 +36,6 @@ class Particle {
     render(prev) {
         fill(...this.color, this.alpha)
         circle(this.x, this.y, this.size)
-
-        // line(this.x, this.y, prev.x, prev.y)
     }
     update(remove) {
         if (this.wait < 0) {
@@ -46,7 +44,6 @@ class Particle {
         }
         this.x += cos(this.driection)*this.speed
         this.y += sin(this.driection)*this.speed
-        // this.y = 2*this.y - this.py + 1/100*deltaTime**2
         if (this.time > this.height) {
             if (this.state == 0) {
                 this.state = 1
@@ -58,14 +55,10 @@ class Particle {
             this.size += deltaTime*.01
             this.speed -= 0.02*deltaTime
             this.alpha = this.speed * 0xff / 10
-            // this.driection+=deltaTime/100
             if (this.time > this.height+.5) {
                 remove()
             }
         }
-        // this.driection+=noise(this.x, this.y)-.5
-        // this.color = (this.driection+0xffffff)%1*0xffffff
-        // this.color = this.index
         if (this.y < 0) {
             remove()
         }
