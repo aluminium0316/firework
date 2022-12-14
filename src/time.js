@@ -10,9 +10,10 @@ button.onclick = async e => {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function f() {
-    const start = Date.now()
+    // const start = Date.now()
     while (time_ > 0) {
-        time_ -= start
-        await sleep()
+        time_ -= .2/deltaTime
+        await sleep(deltaTime)
     }
+    mouseClicked()
 }
