@@ -34,7 +34,8 @@ function draw() {
 }
 
 function mouseClicked() {
-  if (time_) return
+  // console.log(time_)
+  if (time_==1) return
   resetColor()
   for (let i = 0; i < 100; i++) {
     const a = Math.random()*windowWidth
