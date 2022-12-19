@@ -13,14 +13,15 @@ function draw() {
   background(0, 20);
   const black = color(191*time_, 255*time_, 255*time_)
   const blue = color(0+127*time_, 32+191*time_, 63+255*time_)
+  const orange = color(255*time_, 127*time_, 0)
   for (let i = 0; i < windowHeight; i++) {
-    stroke(lerpColor(black, blue, i/windowHeight))
+    stroke(lerpColor(lerpColor(black, blue, i/windowHeight), orange, 1-(2*time_-1)**2-(i/windowHeight-1.5)**2))
     line(0, i, windowWidth, i)
   }
   if (time_<.5)
   stars.forEach(v=>{
     stroke(v[2]/2+128, 191+v[2]/4, 256-v[2]/2)
-    strokeWeight(v[3])
+    strokeWeight(v[3]) 
     point(v[0], v[1])
   })
   noStroke();
