@@ -14,18 +14,23 @@ function draw() {
   const black = color(191*time_, 255*time_, 255*time_)
   const blue = color(0+127*time_, 32+191*time_, 63+255*time_)
   const orange = color(255*time_, 127*time_, 0)
+
+  // 배경
   for (let i = 0; i < windowHeight; i++) {
     stroke(lerpColor(lerpColor(black, blue, i/windowHeight), orange, 1-(2*time_-1)**2-(i/windowHeight-1.5)**2))
     line(0, i, windowWidth, i)
   }
+
+  // 별
   if (time_<.5)
-  stars.forEach(v=>{
-    stroke(v[2]/2+128, 191+v[2]/4, 256-v[2]/2)
-    strokeWeight(v[3]) 
-    point(v[0], v[1])
-  })
+    stars.forEach(v=>{
+      stroke(v[2]/2+128, 191+v[2]/4, 256-v[2]/2)
+      strokeWeight(v[3]) 
+      point(v[0], v[1])
+    })
   noStroke();
   
+  // particle
   positions.forEach((v, i)=>v.update(_ => delete positions[i]))
   positions.forEach((v, i)=>v.render(positions[i-1]??0))
   if (positions.every(v=>!v)) {

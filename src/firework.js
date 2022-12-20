@@ -6,6 +6,7 @@ let r = Math.random()*256
 let g = Math.random()*256
 let b = Math.random()*256
 
+// 무작위 색
 resetColor = color => {
     r = Math.random()*256
     g = Math.random()*256
@@ -34,17 +35,24 @@ class Particle {
         this.height = noise(x, y)
     }
     render(prev) {
+        // render
         fill(...this.color, this.alpha)
         circle(this.x, this.y, this.size)
     }
     update(remove) {
+        // this.wait 초 기다림
         if (this.wait < 0) {
             this.wait+=deltaTime/1000
             return;
         }
+
+        // 위치 바꿈
         this.x += cos(this.driection)*this.speed
         this.y += sin(this.driection)*this.speed
+
+        // 터질곳에 갔을때
         if (this.time > this.height) {
+            // 무작위 위치
             if (this.state == 0) {
                 this.state = 1
                 this.speed = Math.random()*2+8
